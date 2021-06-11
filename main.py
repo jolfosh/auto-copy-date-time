@@ -8,13 +8,14 @@ def add_to_clipboard():
     
 
 if __name__ == '__main__':
-    
-    add_to_clipboard()
-    second_time = int(time.time())
-    delta_minute = 60 - (second_time % 60)
-    time.sleep(delta_minute)
-    
-    while True:
+    try:
         add_to_clipboard()
-        time.sleep(60)
+        second_time = int(time.time())
+        delta_minute = 60 - (second_time % 60)
+        time.sleep(delta_minute)
         
+        while True:
+            add_to_clipboard()
+            time.sleep(60)
+    except KeyboardInterrupt:
+        print("Exiting Loop.")
